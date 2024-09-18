@@ -629,10 +629,11 @@ class Tensor(metaclass=ABCMeta):
         return self.reshape(shape)
 
     def __matmul__(self: TensorType, other: TensorType) -> TensorType:
-        if self.ndim != 2 or other.ndim != 2:
-            raise ValueError(
-                f"matmul requires both tensors to be 2D, got {self.ndim}D and {other.ndim}D"
-            )
+        # TODO: Work only with torch and numpy, check for another
+        # if self.ndim != 2 or other.ndim != 2:
+        #     raise ValueError(
+        #         f"matmul requires both tensors to be 2D, got {self.ndim}D and {other.ndim}D"
+        #     )
         return type(self)(self.raw.__matmul__(other.raw))
 
     def matmul(self: TensorType, other: TensorType) -> TensorType:
